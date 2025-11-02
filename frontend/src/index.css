@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* CSS variables for Slanup palette */
+    --slanup-primary: #007BFF;
+    --slanup-primary-hover: #0069D9;
+    --slanup-background: #FFFFFF;
+    --slanup-text-primary: #212529;
+    --slanup-text-secondary: #6C757D;
+    --slanup-border: #E9ECEF;
+    --slanup-card-bg: #F8F9FA;
+    --slanup-success: #28A745;
+    --slanup-error: #DC3545;
+  }
+
+  body {
+    /* use CSS variables for colors; set font-family directly to avoid @apply expansion errors */
+    font-family: Inter, Poppins, system-ui, sans-serif;
+    background-color: var(--slanup-background);
+    color: var(--slanup-text-primary);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slanup-card-bg, #F8F9FA);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slanup-text-secondary, #6C757D);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slanup-primary, #007BFF);
+}
+
