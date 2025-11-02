@@ -9,15 +9,15 @@ export default {
       colors: {
         // Provide a top-level `slanup` color group so classes like `bg-slanup-primary` work.
         slanup: {
-          primary: '#007BFF',
-          'primary-hover': '#0069D9',
-          background: '#FFFFFF',
-          'text-primary': '#212529',
-          'text-secondary': '#6C757D',
-          border: '#E9ECEF',
-          'card-bg': '#F8F9FA',
-          success: '#28A745',
-          error: '#DC3545',
+          primary: '#7FB069', // matcha green
+          'primary-hover': '#6AA35A',
+          background: '#FBFDF8',
+          'text-primary': '#15321F',
+          'text-secondary': '#557A5B',
+          border: '#E8F2E8',
+          'card-bg': '#F6F9F5',
+          success: '#2F8F3A',
+          error: '#C92A2A',
         },
         accent: {
           blue: '#007BFF',

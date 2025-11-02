@@ -175,55 +175,72 @@ const Home = () => {
         >
           <div className="flex flex-col lg:flex-row gap-4">
             {/* Search Bar */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
-              <input
-                type="text"
-                placeholder="Search events by title, description, or location..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary placeholder-slanup-text-secondary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all"
-              />
+            <div className="flex-1">
+              <label className="block text-sm text-slanup-text-secondary mb-1">Search</label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search events by title, description, or location..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary placeholder-slanup-text-secondary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all"
+                />
+              </div>
             </div>
 
             {/* Location Filter */}
-            <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
-              <select
-                value={locationFilter}
-                onChange={handleLocationChange}
-                className="pl-10 pr-8 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all appearance-none cursor-pointer min-w-[200px]"
-              >
-                <option value="">All Locations</option>
-                {uniqueLocations.map((location) => (
-                  <option key={location} value={location}>
-                    {location}
-                  </option>
-                ))}
-              </select>
+            <div>
+              <label className="block text-sm text-slanup-text-secondary mb-1">Location</label>
+              <div className="relative">
+                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
+                <select
+                  value={locationFilter}
+                  onChange={handleLocationChange}
+                  className="pl-10 pr-8 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all appearance-none cursor-pointer min-w-[200px]"
+                >
+                  <option value="">All Locations</option>
+                  {uniqueLocations.map((location) => (
+                    <option key={location} value={location}>
+                      {location}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             {/* Date Filter */}
-            <div className="relative">
-              <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
-              <input
-                type="date"
-                value={dateFilter}
-                onChange={handleDateChange}
-                className="pl-10 pr-4 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all cursor-pointer min-w-[200px]"
-              />
+            <div>
+              <label className="block text-sm text-slanup-text-secondary mb-1">Date</label>
+              <div className="relative">
+                <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slanup-text-secondary" size={20} />
+                <input
+                  type="date"
+                  value={dateFilter}
+                  onChange={handleDateChange}
+                  className="pl-10 pr-4 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all cursor-pointer min-w-[200px]"
+                />
+              </div>
             </div>
 
             {/* Distance Filter */}
-            <div className="relative">
-              <input
-                type="number"
-                min={0}
-                value={maxDistanceKm}
-                onChange={(e) => setMaxDistanceKm(Number(e.target.value || 0))}
-                placeholder="Max distance (km)"
-                className="pl-3 pr-3 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary placeholder-slanup-text-secondary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all cursor-pointer min-w-[160px]"
-              />
+            <div>
+              <label className="block text-sm text-slanup-text-secondary mb-1">Max distance (km)</label>
+              <div className="relative">
+                <input
+                  type="number"
+                  min={0}
+                  max={200}
+                  value={maxDistanceKm}
+                  onChange={(e) => {
+                    const v = Number(e.target.value || 0)
+                    const clamped = Math.max(0, Math.min(200, isNaN(v) ? 0 : v))
+                    setMaxDistanceKm(clamped)
+                  }}
+                  placeholder="Max distance (km)"
+                  className="pl-3 pr-3 py-3 bg-slanup-card-bg border border-slanup-border rounded-button text-slanup-text-primary placeholder-slanup-text-secondary focus:outline-none focus:border-slanup-primary focus:ring-2 focus:ring-slanup-primary/20 transition-all cursor-pointer min-w-[160px]"
+                />
+              </div>
             </div>
 
             {/* Clear Filters */}

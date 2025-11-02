@@ -4,16 +4,16 @@
 
 @layer base {
   :root {
-    /* CSS variables for Slanup palette */
-    --slanup-primary: #007BFF;
-    --slanup-primary-hover: #0069D9;
-    --slanup-background: #FFFFFF;
-    --slanup-text-primary: #212529;
-    --slanup-text-secondary: #6C757D;
-    --slanup-border: #E9ECEF;
-    --slanup-card-bg: #F8F9FA;
-    --slanup-success: #28A745;
-    --slanup-error: #DC3545;
+    /* CSS variables for Slanup palette (Matcha green theme) */
+    --slanup-primary: #7FB069; /* matcha */
+    --slanup-primary-hover: #6AA35A;
+    --slanup-background: #FBFDF8; /* soft off-white */
+    --slanup-text-primary: #15321F; /* dark green text */
+    --slanup-text-secondary: #557A5B; /* muted green */
+    --slanup-border: #E8F2E8; /* very light green border */
+    --slanup-card-bg: #F6F9F5; /* pale card bg */
+    --slanup-success: #2F8F3A;
+    --slanup-error: #C92A2A;
   }
 
   body {
